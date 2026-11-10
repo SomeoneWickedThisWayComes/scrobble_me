@@ -1,0 +1,48 @@
+# Збірка ScrobbleMe: тести + готовий ScrobbleMe.exe як артефакт.
+# Запускається на кожен push і pull request; на тег v* ще й створює реліз з exe.
+# Як завантажити результат — README.md, розділ «Встановлення».
+name: build
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write # потрібно лише для створення релізу на тег
+
+jobs:
+  build:
+    # Windows-раннер, бо застосунок суто під Windows (WPF + Windows Media API).
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+          cache: true
+          cache-dependency-path: "**/*.csproj"
+
+      - name: Тести
+        run: dotnet test tests/ScrobbleMe.Tests -c Release
+
+      # Self-contained single-file: користувачу не треба ставити .NET — один exe і все.
+      - name: Збірка exe
+        run: >
+          dotnet publish src/ScrobbleMe/ScrobbleMe.csproj -c Release -r win-x64
+          --self-contained -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=none -o publish
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ScrobbleMe-win-x64
+          path: publish/ScrobbleMe.exe
+          retention-days: 30
+
+      - name: Реліз
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: publish/ScrobbleMe.exe

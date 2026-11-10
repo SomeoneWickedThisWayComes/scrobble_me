@@ -1,0 +1,7 @@
+# Артефакти збірки .NET і файли IDE.
+bin/
+obj/
+publish/
+.vs/
+*.user
+TestResults/

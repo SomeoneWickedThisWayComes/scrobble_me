@@ -1,0 +1,10 @@
+<!--
+  Точка входу WPF. Вікно не задаємо через StartupUri: App сам вирішує, показувати його
+  чи стартувати одразу в треї (ключ запуску «minimized»). OnExplicitShutdown — щоб закриття всіх вікон
+  не завершувало застосунок: він має жити в треї.
+-->
+<Application x:Class="ScrobbleMe.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             ShutdownMode="OnExplicitShutdown">
+</Application>

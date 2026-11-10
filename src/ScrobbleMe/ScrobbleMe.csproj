@@ -1,0 +1,33 @@
+<!--
+  Проєкт застосунку ScrobbleMe (WPF, .NET 8, лише Windows).
+  Збирається командою `dotnet publish` у GitHub Actions (.github/workflows/build.yml) або локально.
+  TFM з версією Windows SDK потрібен для API «Керування мультимедіа» (Windows.Media.Control).
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <!-- Windows 10 1809 — перша версія, де є GlobalSystemMediaTransportControlsSessionManager. -->
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <UseWPF>true</UseWPF>
+    <!-- WinForms потрібен лише заради NotifyIcon (значок у треї). -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- Неявні using вимкнено: WPF і WinForms мають однакові імена типів (Application, MessageBox…). -->
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- Дозволяє перевіряти збірку й на Linux (у CI-контейнерах), хоча запуск — лише на Windows. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RootNamespace>ScrobbleMe</RootNamespace>
+    <AssemblyName>ScrobbleMe</AssemblyName>
+    <Version>0.1.0</Version>
+    <Product>ScrobbleMe</Product>
+    <Description>Скроблінг з Apple Music для Windows у last.fm</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- DPAPI для шифрування секретів у settings.json. -->
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>
