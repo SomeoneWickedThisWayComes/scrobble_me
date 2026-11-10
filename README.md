@@ -2,147 +2,147 @@
 
 # ♪ ScrobbleMe
 
-**Скроблінг з Apple Music для Windows у [last.fm](https://www.last.fm).**
-Тихо живе в треї й записує в профіль усе, що ви слухаєте.
+**Scrobble Apple Music for Windows to [last.fm](https://www.last.fm).**
+Sits quietly in the system tray and logs everything you listen to.
 
 [![build](https://github.com/SomeoneWickedThisWayComes/scrobble_me/actions/workflows/build.yml/badge.svg)](https://github.com/SomeoneWickedThisWayComes/scrobble_me/actions/workflows/build.yml)
 ![Windows 10/11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?logo=windows&logoColor=white)
 ![.NET 8](https://img.shields.io/badge/.NET-8-512BD4?logo=dotnet&logoColor=white)
 ![last.fm](https://img.shields.io/badge/last.fm-scrobbler-D51007?logo=lastdotfm&logoColor=white)
 
-<img src="docs/images/now-playing.png" width="460" alt="Віконце «Зараз грає» над треєм">
+<img src="docs/images/now-playing.png" width="460" alt="Now Playing window above the system tray">
 
 </div>
 
 > [!NOTE]
-> Зображення в README — макети, відтворені за розміткою вікон. На справжній Windows шрифт і рамки
-> будуть системні, а розташування й тексти такі самі.
+> The images in this README are mockups rendered from the window layouts. On real Windows the font
+> and window frames are the system ones; layout and text are the same. The app's interface is in Ukrainian.
 
 ---
 
-## ✨ Що вміє
+## ✨ Features
 
 | | |
 |---|---|
-| 🎵 **Бачить, що грає** | Назва, виконавець, альбом і обкладинка з Apple Music, оновлення щосекунди. |
-| 📡 **Скроблить чесно** | Як вимагає last.fm: трек довший за 30 с, прослухано половину або 4 хв. Пауза й перемотування не рахуються. Окремо надсилає «Scrobbling now». |
-| 🔁 **Повтор однієї пісні** | Кожне повторне прослуховування — окремий скробл. |
-| 📴 **Не губить скробли** | Без інтернету вони чекають у черзі на диску й відправляються, щойно з'явиться зв'язок. |
-| 🖥️ **Живе в треї** | Хрестик ховає вікно, а не закриває програму. Є автозапуск разом з Windows. |
-| ⏸️ **Пауза** | Пункт меню «Призупинити скроблінг», коли слухаєте щось не для профілю. |
-| 🔒 **Безпечно** | Пароль не зберігається. Ключі шифруються засобами Windows (DPAPI) і на іншому ПК не розшифруються. |
+| 🎵 **Knows what's playing** | Title, artist, album and cover art from Apple Music, refreshed every second. |
+| 📡 **Scrobbles by the rules** | As last.fm requires: track longer than 30 s, played for half its length or 4 minutes. Pauses and seeking don't count. Also sends "Scrobbling now". |
+| 🔁 **Repeat one** | Every replay of the same song is a separate scrobble. |
+| 📴 **Never loses scrobbles** | Offline scrobbles wait in a queue on disk and are sent as soon as the connection is back. |
+| 🖥️ **Lives in the tray** | The close button hides the window instead of quitting. Optional start with Windows. |
+| ⏸️ **Pause** | "Pause scrobbling" in the tray menu for things you don't want on your profile. |
+| 🔒 **Safe** | Your password is never stored. Keys are encrypted with Windows DPAPI and can't be decrypted on another PC. |
 
-## 🖼️ Як це виглядає
+## 🖼️ Screenshots
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-**Трей.** Хрестик ховає вікно сюди. Лівий клік по значку — відкрити віконце, правий — меню.
+**System tray.** The close button hides the window here. Left-click the icon to open it, right-click for the menu.
 
-<img src="docs/images/tray.png" alt="Меню в треї">
+<img src="docs/images/tray.png" alt="Tray menu">
 
 </td>
 <td width="50%" valign="top">
 
-**Різні стани.** Заскроблено ✓, пауза, черга, немає зв'язку з last.fm.
+**States.** Scrobbled ✓, paused, queued, last.fm unreachable.
 
-<img src="docs/images/states.png" alt="Стани віконця">
+<img src="docs/images/states.png" alt="Window states">
 
 </td>
 </tr>
 </table>
 
-## 🚀 Встановлення
+## 🚀 Installation
 
-1. **Завантажте `ScrobbleMe.exe`**:
-   - з [Releases](https://github.com/SomeoneWickedThisWayComes/scrobble_me/releases), коли там з'явиться реліз, або
-   - з [Actions](https://github.com/SomeoneWickedThisWayComes/scrobble_me/actions/workflows/build.yml) → останній зелений запуск → артефакт **ScrobbleMe-win-x64** (zip, усередині exe).
-2. **Покладіть exe куди зручно** (наприклад, `%USERPROFILE%\Apps\ScrobbleMe\`) і запустіть.
-   .NET встановлювати не треба, усе вже всередині.
+1. **Download `ScrobbleMe.exe`**:
+   - from [Releases](https://github.com/SomeoneWickedThisWayComes/scrobble_me/releases), once a release is published, or
+   - from [Actions](https://github.com/SomeoneWickedThisWayComes/scrobble_me/actions/workflows/build.yml) → latest green run → artifact **ScrobbleMe-win-x64** (a zip with the exe inside).
+2. **Put the exe anywhere** (e.g. `%USERPROFILE%\Apps\ScrobbleMe\`) and run it.
+   No need to install .NET — everything is bundled.
 
 > [!TIP]
-> Windows SmartScreen може попередити про «невідомого видавця», бо exe не підписаний.
-> Натисніть **Докладніше → Однаково запустити**.
+> Windows SmartScreen may warn about an "unknown publisher" because the exe isn't signed.
+> Click **More info → Run anyway**.
 
-**Вимоги:** Windows 10 1809+ або Windows 11 і застосунок **Apple Music** з Microsoft Store.
+**Requirements:** Windows 10 1809+ or Windows 11, and the **Apple Music** app from the Microsoft Store.
 
-## 🔑 Перший запуск: вхід у last.fm
+## 🔑 First run: signing in to last.fm
 
-<img src="docs/images/settings.png" width="420" align="right" alt="Вікно налаштувань">
+<img src="docs/images/settings.png" width="420" align="right" alt="Settings window">
 
-last.fm вимагає, щоб у кожного застосунку був свій API-ключ. Його створюють один раз, це займає хвилини дві:
+last.fm requires every app to have its own API key. You create it once; it takes about two minutes:
 
-1. Відкрийте **[last.fm/api/account/create](https://www.last.fm/api/account/create)**.
-2. **Application name** — будь-яка (наприклад, `ScrobbleMe`).
-   **Callback URL** — можна лишити порожнім. Натисніть **Submit**.
-3. Скопіюйте **API key** і **Shared secret** у налаштування ScrobbleMe.
-4. Введіть логін і пароль last.fm → **Увійти**.
+1. Open **[last.fm/api/account/create](https://www.last.fm/api/account/create)**.
+2. **Application name** — anything (e.g. `ScrobbleMe`).
+   **Callback URL** — leave empty. Click **Submit**.
+3. Copy the **API key** and **Shared secret** into ScrobbleMe's settings.
+4. Enter your last.fm username and password → **Sign in** («Увійти»).
 
-Пароль використовується лише один раз: програма обмінює його на ключ сесії й далі працює тільки з ключем.
+The password is used only once: the app exchanges it for a session key and works with that key from then on.
 
-**Перевірка:** увімкніть пісню в Apple Music. У профілі last.fm з'явиться *Scrobbling now*, а після половини треку у віконці буде **✓ Заскроблено**.
+**Check:** play a song in Apple Music. Your last.fm profile will show *Scrobbling now*, and after half the track the window will say **✓ Scrobbled** («Заскроблено»).
 
 <br clear="right">
 
-## 🩺 Якщо щось не так
+## 🩺 Troubleshooting
 
 <details>
-<summary><b>«Apple Music не запущено», хоча музика грає</b></summary>
+<summary><b>"Apple Music is not running" while music is playing</b></summary>
 
-Підтримується лише **новий** застосунок Apple Music з Microsoft Store. Старий iTunes для Windows
-не передає системі, що зараз грає.
+Only the **new** Apple Music app from the Microsoft Store is supported. The old iTunes for Windows
+doesn't report what's playing to the system.
 </details>
 
 <details>
-<summary><b>Трек показується, але не скроблиться</b></summary>
+<summary><b>The track is shown but never scrobbled</b></summary>
 
-Подивіться статус під смужкою прогресу. Треки, коротші за 30 с, last.fm не приймає.
-Подробиці — у журналі `%APPDATA%\ScrobbleMe\log.txt`.
+Check the status line under the progress bar. last.fm doesn't accept tracks shorter than 30 s.
+Details are in the log: `%APPDATA%\ScrobbleMe\log.txt`.
 </details>
 
 <details>
-<summary><b>«last.fm відхилив сесію — увійдіть знову»</b></summary>
+<summary><b>"last.fm rejected the session — sign in again"</b></summary>
 
-Налаштування → **Вийти з облікового запису** → увійдіть знову. Скробли з черги не загубляться.
+Settings → **Sign out** → sign in again. Queued scrobbles are kept.
 </details>
 
 <details>
-<summary><b>Виконавець або альбом у last.fm записались криво</b></summary>
+<summary><b>Artist or album shows up wrong on last.fm</b></summary>
 
-Apple Music передає їх одним рядком «Виконавець — Альбом», і програма розрізає його по тире
-([чому так](docs/decisions.md#d-2-розрізати-виконавець--альбом)). Якщо трапився збій, створіть issue з назвою треку.
+Apple Music sends them as a single "Artist — Album" string, and the app splits it on the dash
+([why](docs/decisions.md#d-2-розрізати-виконавець--альбом)). If it goes wrong, open an issue with the track name.
 </details>
 
-### Де лежать дані
+### Where the data lives
 
-Усе зберігається в `%APPDATA%\ScrobbleMe\`:
+Everything is stored in `%APPDATA%\ScrobbleMe\`:
 
-| Файл | Що в ньому |
+| File | Contents |
 |---|---|
-| `settings.json` | Налаштування. API secret і ключ сесії зашифровані. |
-| `queue.json` | Скробли, які ще чекають відправки. |
-| `log.txt` | Журнал: що грало, що заскроблено, помилки. |
+| `settings.json` | Settings. The API secret and session key are encrypted. |
+| `queue.json` | Scrobbles waiting to be sent. |
+| `log.txt` | Log: what played, what was scrobbled, errors. |
 
-## 🛠️ Для розробників
+## 🛠️ For developers
 
 ```
 src/ScrobbleMe/
-├── Core/                     логіка без залежностей від Windows (тестується на будь-якій ОС)
-│   ├── ScrobbleTracker.cs      коли скроблити: облік прослуханого часу
-│   ├── AppleMusicMetadata.cs   розбір «Виконавець — Альбом»
-│   ├── LastFmClient.cs         запити до last.fm API
-│   ├── LastFmSignature.cs      підпис запитів (api_sig)
-│   └── ScrobbleQueue.cs        черга скроблів на диску
-├── Services/                 Windows: читання плеєра, налаштування, автозапуск, журнал
-├── UI/                       вікна WPF і значок у треї
-└── App.xaml.cs               з'єднує все разом і опитує плеєр раз на секунду
-tests/ScrobbleMe.Tests/       тести Core
-docs/decisions.md             журнал рішень: що обрали і чому
-.github/workflows/build.yml   CI: тести + exe на кожен push, реліз на тег v*
+├── Core/                     Windows-independent logic (testable on any OS)
+│   ├── ScrobbleTracker.cs      when to scrobble: tracks actual listening time
+│   ├── AppleMusicMetadata.cs   splits "Artist — Album"
+│   ├── LastFmClient.cs         last.fm API calls
+│   ├── LastFmSignature.cs      request signing (api_sig)
+│   └── ScrobbleQueue.cs        on-disk scrobble queue
+├── Services/                 Windows: player reading, settings, autostart, log
+├── UI/                       WPF windows and the tray icon
+└── App.xaml.cs               wires everything together, polls the player once a second
+tests/ScrobbleMe.Tests/       tests for Core
+docs/decisions.md             decision log: what was chosen and why (Ukrainian)
+.github/workflows/build.yml   CI: tests + exe on every push, release on v* tags
 ```
 
-Потрібен **.NET 8 SDK**.
+Requires the **.NET 8 SDK**.
 
 ```bash
 dotnet test tests/ScrobbleMe.Tests
@@ -152,8 +152,8 @@ dotnet test tests/ScrobbleMe.Tests
 dotnet publish src/ScrobbleMe/ScrobbleMe.csproj -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
 ```
 
-Збирати можна і на Linux/macOS (`EnableWindowsTargeting`), а запускати — лише на Windows.
+It builds on Linux/macOS too (`EnableWindowsTargeting`), but runs on Windows only.
 
-**Випуск релізу:** поставте тег `v0.1.0` і запуште його. CI сам створить реліз з exe.
+**Releasing:** push a tag like `v0.1.0` and CI will create a release with the exe.
 
-Чому зроблено саме так — у [журналі рішень](docs/decisions.md).
+See the [decision log](docs/decisions.md) for the reasoning behind the design.
